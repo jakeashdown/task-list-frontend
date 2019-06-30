@@ -22,6 +22,13 @@ export class AppComponent implements OnInit {
       )
   }
 
+  postNewTask(): any {
+    this.appService.postTask().subscribe(
+      (response) => { console.log('response from post data is ', response); response; },
+      (error) => { console.log('error during post is ', error) }
+    )
+  }
+
   ngOnInit() {
     this.getAllTasks();
   }

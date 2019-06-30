@@ -9,7 +9,16 @@
   </ul>
 </div>
 
+<button type="button"
+  name="post new task"
+  (click)="newTaskId=postNewTask()"></button>
+
 <div *ngIf="selectedTask">
   <h2 [innerHTML]="selectedTask.title"></h2>
   <div [innerHTML]="selectedTask.description"></div>
+</div>
+
+<div *ngIf="newTaskId">
+  <h2>ID of new task</h2>
+  <div [innerHTML]="newTaskId"></div>
 </div>

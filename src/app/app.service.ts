@@ -17,4 +17,9 @@ export class AppService {
       .pipe(map(data => data));
   }
 
+  // TODO: modify this to take input
+  postTask(){
+    return this.http.post(this.allTasksUrl, {"title": "task posted from angular", "description": "some description"})
+  }
+
 }

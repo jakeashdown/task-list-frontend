@@ -4,8 +4,12 @@
   <ul>
     <li *ngFor="let task of allTasks"
       [innerHTML]="task.title"
-      (click)="selectedContent='<h2>' + task.title + '</h2>'">
+      (click)="selectedTask=task">
     </li>
   </ul>
 </div>
-<div [innerHTML]="selectedContent"></div>
+
+<div *ngIf="selectedTask">
+  <h2 [innerHTML]="selectedTask.title"></h2>
+  <div [innerHTML]="selectedTask.description"></div>
+</div>

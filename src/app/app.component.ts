@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +9,11 @@ import { map } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'rest-frontend-demo';
   allTasks: any
-  allTasksUrl = "http://localhost:8080/task"
 
-  constructor(private http: HttpClient) {}
-
-  taskServiceGetAllTasks() {
-    return this.http
-      .get<any[]>(this.allTasksUrl)
-      .pipe(map(data => data));
-  }
+  constructor(private appService: AppService) {}
 
   getAllTasks(): void {
-    this.taskServiceGetAllTasks()
+    this.appService.getAllTasks()
       .subscribe(
         allTasksFromApi => {
           this.allTasks = allTasksFromApi;

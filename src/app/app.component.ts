@@ -15,18 +15,8 @@ export class AppComponent implements OnInit {
   getAllTasks(): void {
     this.appService.getAllTasks()
       .subscribe(
-        allTasksFromApi => {
-          this.allTasks = allTasksFromApi;
-          console.log(this.allTasks);
-        }
+        allTasksFromApi => { this.allTasks = allTasksFromApi; }
       )
-  }
-
-  postNewTask(): any {
-    this.appService.postTask().subscribe(
-      (response) => { console.log('response from post data is ', response); response; },
-      (error) => { console.log('error during post is ', error) }
-    )
   }
 
   ngOnInit() {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { NewTask } from './new-task'
 
 @Injectable()
 export class AppService {
@@ -17,9 +18,8 @@ export class AppService {
       .pipe(map(data => data));
   }
 
-  // TODO: modify this to take input
-  postTask(){
-    return this.http.post(this.allTasksUrl, {"title": "task posted from angular", "description": "some description"})
+  postNewTask(newTask: NewTask){
+    return this.http.post(this.allTasksUrl, {"title": newTask.title, "description": newTask.description})
   }
 
 }

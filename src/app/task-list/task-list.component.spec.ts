@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaskListComponent } from './task-list.component';
 import { HttpClientService } from '../http-client.service';
+import { TaskListComponent } from './task-list.component';
+import { UpdateTaskFormComponent } from './update-task-form/update-task-form.component';
 
 describe('TaskListComponent', () => {
   let component: TaskListComponent;
@@ -11,7 +12,7 @@ describe('TaskListComponent', () => {
   beforeEach(async(() => {
     const spy = jasmine.createSpyObj('HttpClientService', ['getAllTasks', 'postNewTask']);
     TestBed.configureTestingModule({
-      declarations: [ TaskListComponent ],
+      declarations: [ TaskListComponent, UpdateTaskFormComponent ],
       providers: [ { provide: HttpClientService, useValue: spy } ]
     }).compileComponents();
     httpClientServiceSpy = TestBed.get(HttpClientService);

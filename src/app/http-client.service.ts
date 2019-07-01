@@ -15,12 +15,14 @@ export class HttpClientService {
   constructor(private http: HttpClient) {}
 
   getAllTasks() {
+    console.log('HttpClientService: getting list of all tasks');
     return this.http
       .get<any[]>(this.host + this.taskPathSegment)
       .pipe(map(data => data));
   }
 
   postNewTask(newTask: NewTask) {
+    console.log('HttpClientService: posting new task [' + newTask + ']');
     return this.http.post(
       this.host + this.taskPathSegment,
       {'title': newTask.title, 'description': newTask.description}

@@ -16,9 +16,12 @@ export class NewTaskFormComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
+    console.log('NewTaskFormComponent: submitting form');
     this.httpClientService.postNewTask(this.newTask).subscribe(
-      (response) => { console.log('Response from post data is ', response); },
-      (error) => { console.log('Error posting new task [' + this.newTask + ']', error); }
+      (response) => { },
+      (error) => {
+        console.log('NewTaskFormComponent: error response from posting new task [' + this.newTask + ']', error);
+      }
     );
   }
 }

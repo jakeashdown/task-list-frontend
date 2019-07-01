@@ -13,6 +13,7 @@ export class TaskListComponent implements OnInit {
   }
 
   getAllTasks(): void {
+    console.log('TaskListComponent: getting list of all tasks');
     this.httpClientService.getAllTasks()
       .subscribe(
         allTasksFromApi => { this.allTasks = allTasksFromApi; }
@@ -20,6 +21,7 @@ export class TaskListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('TaskListComponent: initialising');
     this.getAllTasks();
   }
 }

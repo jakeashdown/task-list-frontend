@@ -7,16 +7,16 @@ import { HttpClientService } from '../http-client.service';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
-  allTasks: any
+  allTasks: any;
 
-  constructor(private HttpClientService: HttpClientService) {
+  constructor(private httpClientService: HttpClientService) {
   }
 
   getAllTasks(): void {
-    this.HttpClientService.getAllTasks()
+    this.httpClientService.getAllTasks()
       .subscribe(
         allTasksFromApi => { this.allTasks = allTasksFromApi; }
-      )
+      );
   }
 
   ngOnInit() {

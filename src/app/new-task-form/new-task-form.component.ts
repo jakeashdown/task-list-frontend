@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewTask } from '../new-task'
+import { NewTask } from '../new-task';
 import { HttpClientService } from '../http-client.service';
 
 @Component({
@@ -9,16 +9,16 @@ import { HttpClientService } from '../http-client.service';
 })
 export class NewTaskFormComponent implements OnInit {
 
-  newTask = new NewTask(null, null)
+  newTask = new NewTask(null, null);
 
-  constructor(private HttpClientService: HttpClientService) { }
+  constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {}
 
   onSubmit() {
-    this.HttpClientService.postNewTask(this.newTask).subscribe(
-      (response) => { console.log('Response from post data is ', response); response; },
-      (error) => { console.log('Error posting new task [' + this.newTask + ']', error) }
-    )
+    this.httpClientService.postNewTask(this.newTask).subscribe(
+      (response) => { console.log('Response from post data is ', response); },
+      (error) => { console.log('Error posting new task [' + this.newTask + ']', error); }
+    );
   }
 }

@@ -15,9 +15,8 @@ describe('NewTaskFormComponent', () => {
       declarations: [ NewTaskFormComponent ],
       imports: [ FormsModule ],
       providers: [ { provide: HttpClientService, useValue: spy } ]
-    })
-    .compileComponents();
-    httpClientServiceSpy = TestBed.get(HttpClientService)
+    }).compileComponents();
+    httpClientServiceSpy = TestBed.get(HttpClientService);
     fixture = TestBed.createComponent(NewTaskFormComponent);
     component = fixture.debugElement.componentInstance;
   }));

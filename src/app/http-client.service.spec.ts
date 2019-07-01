@@ -4,16 +4,16 @@ import { HttpClientService } from './http-client.service';
 import { HttpClient } from '@angular/common/http';
 
 describe('HttpClientService', () => {
-  let httpClientService: HttpClientService
+  let httpClientService: HttpClientService;
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
     const spy = jasmine.createSpyObj('HttpClient', ['get', 'post']);
     TestBed.configureTestingModule({
       providers: [ HttpClientService, { provide: HttpClient, useValue: spy } ]
-    })
-    httpClientService = TestBed.get(HttpClientService)
-    httpClientSpy = TestBed.get(HttpClient)
+    });
+    httpClientService = TestBed.get(HttpClientService);
+    httpClientSpy = TestBed.get(HttpClient);
   });
 
   it('should be created', () => {

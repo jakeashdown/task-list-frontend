@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { SafeHtml } from '@angular/platform-browser';
-import { NewTask } from './new-task'
+import { NewTask } from './new-task';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpClientService {
 
-  protected host: string = 'http://localhost:8080';
-  protected taskPathSegment: string = '/task'
+  protected host = 'http://localhost:8080';
+  protected taskPathSegment = '/task';
 
   constructor(private http: HttpClient) {}
 
@@ -20,11 +20,11 @@ export class HttpClientService {
       .pipe(map(data => data));
   }
 
-  postNewTask(newTask: NewTask){
+  postNewTask(newTask: NewTask) {
     return this.http.post(
       this.host + this.taskPathSegment,
-      {"title": newTask.title, "description": newTask.description}
-    )
+      {'title': newTask.title, 'description': newTask.description}
+    );
   }
 
 }

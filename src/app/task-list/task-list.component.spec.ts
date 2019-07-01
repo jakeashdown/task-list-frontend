@@ -13,9 +13,8 @@ describe('TaskListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ TaskListComponent ],
       providers: [ { provide: HttpClientService, useValue: spy } ]
-    })
-    .compileComponents();
-    httpClientServiceSpy = TestBed.get(HttpClientService)
+    }).compileComponents();
+    httpClientServiceSpy = TestBed.get(HttpClientService);
     fixture = TestBed.createComponent(TaskListComponent);
     component = fixture.debugElement.componentInstance;
   }));

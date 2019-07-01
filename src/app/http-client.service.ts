@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { SafeHtml } from '@angular/platform-browser';
 import { NewTask } from './new-task'
 
 @Injectable({
@@ -9,18 +9,22 @@ import { NewTask } from './new-task'
 })
 export class HttpClientService {
 
-  protected allTasksUrl: string = 'http://localhost:8080/task';
+  protected host: string = 'http://localhost:8080';
+  protected taskPathSegment: string = '/task'
 
-  constructor(private http: HttpClient, public sanitizer: DomSanitizer) {}
+  constructor(private http: HttpClient) {}
 
   getAllTasks() {
     return this.http
-      .get<any[]>(this.allTasksUrl)
+      .get<any[]>(this.host + this.taskPathSegment)
       .pipe(map(data => data));
   }
 
   postNewTask(newTask: NewTask){
-    return this.http.post(this.allTasksUrl, {"title": newTask.title, "description": newTask.description})
+    return this.http.post(
+      this.host + this.taskPathSegment,
+      {"title": newTask.title, "description": newTask.description}
+    )
   }
 
 }

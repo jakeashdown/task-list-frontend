@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +7,8 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit {
   title = 'rest-frontend-demo';
-  allTasks: any
 
-  constructor(private appService: AppService) {}
+  constructor() {}
 
-  getAllTasks(): void {
-    this.appService.getAllTasks()
-      .subscribe(
-        allTasksFromApi => { this.allTasks = allTasksFromApi; }
-      )
-  }
-
-  ngOnInit() {
-    this.getAllTasks();
-  }
+  ngOnInit() {}
 }

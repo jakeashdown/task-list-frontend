@@ -9,8 +9,15 @@
         <label for="description">Description:</label>
         <input type="text" formControlName="description" class="form-control">
       </div>
-
-      <button type="submit" class="btn btn-success">Update</button>
     </form>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <button class="btn btn-success" (click)="updateTask()">Update</button>
+      </div>
+      <div class="col-xs-6">
+        <button class="btn btn-danger pull-right" (click)="deleteTask()">Delete</button>
+      </div>
+    </div>
   </div>
 </div>

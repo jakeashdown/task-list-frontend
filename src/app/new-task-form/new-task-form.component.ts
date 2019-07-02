@@ -19,7 +19,7 @@ export class NewTaskFormComponent {
     this.httpClientService.createNewTask(this.newTask)
     .subscribe(
       (response) => this.httpClientService.refreshTaskCache(),
-      (error) => this.logger.error('form submission failed', error)
+      (error) => this.logger.error('error creating task', this.newTask, error)
     );
   }
 }

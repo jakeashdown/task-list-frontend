@@ -46,4 +46,9 @@ export class HttpClientService {
       {title: updatedTask.title, description: updatedTask.description}
     );
   }
+
+  removeExistingTask(taskId: number): Observable<any> {
+    this.logger.info('removing task with ID', taskId);
+    return this.http.delete(this.host + this.taskPathSegment + '/' + taskId);
+  }
 }

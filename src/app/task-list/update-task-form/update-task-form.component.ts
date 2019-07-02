@@ -28,11 +28,19 @@ export class UpdateTaskFormComponent implements OnChanges {
     });
   }
 
-  onSubmit() {
+  updateTask() {
     this.httpClientService.updateExistingTask(this.updateTaskForm.value, this.oldTask.id)
     .subscribe(
       (response) => this.httpClientService.refreshTaskCache(),
-      (error) => this.logger.error('form submission failed', error)
+      (error) => this.logger.error('error updating task', this.updateTaskForm.value, error)
+    );
+  }
+
+  deleteTask() {
+    this.httpClientService.removeExistingTask(this.oldTask.id)
+    .subscribe(
+      (response) => this.httpClientService.refreshTaskCache(),
+      (error) => this.logger.error('error removing task', this.oldTask.id, error)
     );
   }
 

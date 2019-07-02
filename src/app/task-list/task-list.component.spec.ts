@@ -10,7 +10,7 @@ describe('TaskListComponent', () => {
   let httpClientServiceSpy: jasmine.SpyObj<HttpClientService>;
 
   beforeEach(async(() => {
-    const spy = jasmine.createSpyObj('HttpClientService', ['getAllTasks', 'postNewTask']);
+    const spy = jasmine.createSpyObj('HttpClientService', ['refreshTaskCache', 'postNewTask']);
     TestBed.configureTestingModule({
       declarations: [ TaskListComponent, UpdateTaskFormComponent ],
       providers: [ { provide: HttpClientService, useValue: spy } ]

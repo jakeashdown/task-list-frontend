@@ -10,7 +10,7 @@ describe('NewTaskFormComponent', () => {
   let httpClientServiceSpy: jasmine.SpyObj<HttpClientService>;
 
   beforeEach(async(() => {
-    const spy = jasmine.createSpyObj('HttpClientService', ['getAllTasks', 'postNewTask']);
+    const spy = jasmine.createSpyObj('HttpClientService', ['refreshTaskCache', 'postNewTask']);
     TestBed.configureTestingModule({
       declarations: [ NewTaskFormComponent ],
       imports: [ FormsModule ],

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { HttpClientService } from '../http-client.service';
+import { Task } from '../task';
 
 @Component({
   selector: 'app-task-list',
@@ -7,21 +9,13 @@ import { HttpClientService } from '../http-client.service';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
-  allTasks: any;
+  allTasks: Task[];
 
-  constructor(private httpClientService: HttpClientService) {
-  }
-
-  getAllTasks(): void {
-    console.log('TaskListComponent: getting list of all tasks');
-    this.httpClientService.getAllTasks()
-      .subscribe(
-        allTasksFromApi => { this.allTasks = allTasksFromApi; }
-      );
-  }
+  constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {
     console.log('TaskListComponent: initialising');
-    this.getAllTasks();
+    this.httpClientService.taskCache.subscribe(tasks => this.allTasks = tasks)
+    this.httpClientService.refreshTaskCache();
   }
 }

@@ -18,7 +18,7 @@ export class NewTaskFormComponent implements OnInit {
   onSubmit() {
     console.log('NewTaskFormComponent: submitting form');
     this.httpClientService.postNewTask(this.newTask).subscribe(
-      (response) => { },
+      (response) => { this.httpClientService.refreshTaskCache(); },
       (error) => {
         console.log('NewTaskFormComponent: error response from posting new task [' + this.newTask + ']', error);
       }

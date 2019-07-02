@@ -14,11 +14,7 @@ export class TaskListComponent implements OnInit {
   constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {
-    console.log('TaskListComponent: initialising');
-    this.httpClientService.taskCache.subscribe(tasks => {
-      console.log('TaskListComponent: task list refreshed');
-      this.allTasks = tasks;
-    })
+    this.httpClientService.taskCache.subscribe(tasks => this.allTasks = tasks)
     this.httpClientService.refreshTaskCache();
   }
 }

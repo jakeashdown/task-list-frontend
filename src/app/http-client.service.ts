@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { NGXLogger } from 'ngx-logger';
 import { Subject, Observable } from 'rxjs';
 
 import { NewTask } from './new-task';
@@ -16,22 +16,22 @@ export class HttpClientService {
 
   taskCache: Subject<Task[]>
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private logger: NGXLogger) {
     this.taskCache = new Subject();
   }
 
   refreshTaskCache(): void {
-    console.log('HttpClientService: refreshing task cache');
+    this.logger.info('refreshing task cache');
     this.http
       .get<Task[]>(this.host + this.taskPathSegment)
       .subscribe(tasks => {
-        console.log('HttpClientService: publishing cache update');
+        this.logger.info('publishing cache update');
         this.taskCache.next(tasks);
       });
   }
 
   postNewTask(newTask: NewTask): Observable<any> {
-    console.log('HttpClientService: posting new task [' + newTask + ']');
+    this.logger.info('posting new task', newTask);
     return this.http.post(
       this.host + this.taskPathSegment,
       {title: newTask.title, description: newTask.description}

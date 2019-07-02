@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
+import { NGXLogger } from 'ngx-logger';
 
 import { HttpClientService } from './http-client.service';
 
@@ -8,9 +9,12 @@ describe('HttpClientService', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    const spy = jasmine.createSpyObj('HttpClient', ['get', 'post']);
     TestBed.configureTestingModule({
-      providers: [ HttpClientService, { provide: HttpClient, useValue: spy } ]
+      providers: [
+        HttpClientService,
+        { provide: HttpClient, useValue: jasmine.createSpyObj('HttpClient', ['get', 'post']) },
+        { provide: NGXLogger, useValue: jasmine.createSpyObj('NGXLogger', ['info']) }
+       ]
     });
     httpClientService = TestBed.get(HttpClientService);
     httpClientSpy = TestBed.get(HttpClient);

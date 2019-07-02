@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { NGXLogger } from 'ngx-logger';
 
 import { HttpClientService } from '../http-client.service';
 import { NewTaskFormComponent } from './new-task-form.component';
@@ -10,11 +11,13 @@ describe('NewTaskFormComponent', () => {
   let httpClientServiceSpy: jasmine.SpyObj<HttpClientService>;
 
   beforeEach(async(() => {
-    const spy = jasmine.createSpyObj('HttpClientService', ['refreshTaskCache', 'postNewTask']);
     TestBed.configureTestingModule({
       declarations: [ NewTaskFormComponent ],
       imports: [ FormsModule ],
-      providers: [ { provide: HttpClientService, useValue: spy } ]
+      providers: [
+        { provide: HttpClientService, useValue: jasmine.createSpyObj('HttpClientService', ['refreshTaskCache', 'postNewTask']) },
+        { provide: NGXLogger, useValue: jasmine.createSpyObj('NGXLogger', ['info']) }
+      ]
     }).compileComponents();
     httpClientServiceSpy = TestBed.get(HttpClientService);
     fixture = TestBed.createComponent(NewTaskFormComponent);

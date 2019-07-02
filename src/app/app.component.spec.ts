@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 import { HttpClientService } from './http-client.service';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
         NewTaskFormComponent
       ],
       imports: [
+        LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
         BrowserModule,
         HttpClientModule,
         FormsModule

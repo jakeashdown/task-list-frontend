@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 
 import { HttpClientService } from '../http-client.service';
 import { NewTask } from '../new-task';
@@ -12,18 +13,15 @@ export class NewTaskFormComponent implements OnInit {
 
   newTask = new NewTask(null, null);
 
-  constructor(private httpClientService: HttpClientService) { }
+  constructor(private httpClientService: HttpClientService, private logger: NGXLogger) { }
 
   ngOnInit() {}
 
   onSubmit() {
     console.log('NewTaskFormComponent: submitting new task [' + this.newTask + ']');
     this.httpClientService.postNewTask(this.newTask).subscribe(
-      (response) => {
-        console.log('NewTaskFormComponent: refreshing cache');
-        this.httpClientService.refreshTaskCache();
-      },
-      (error) => console.log('NewTaskFormComponent: error response', error)
+      (response) => this.httpClientService.refreshTaskCache(),
+      (error) => this.logger.error('form submission failed', error)
     );
   }
 }

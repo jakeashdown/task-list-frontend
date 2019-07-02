@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 import { HttpClientService } from './http-client.service';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
     FormsModule
   ],
   providers: [ HttpClientService ], // TODO: find nice logging service to use

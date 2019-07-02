@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FormsModule } from '@angular/forms';
 
 import { UpdateTaskFormComponent } from './update-task-form.component';

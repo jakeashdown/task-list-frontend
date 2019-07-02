@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
 
 import { HttpClientService } from './http-client.service';
-import { HttpClient } from '@angular/common/http';
 
 describe('HttpClientService', () => {
   let httpClientService: HttpClientService;

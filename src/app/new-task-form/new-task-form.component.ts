@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NewTask } from '../new-task';
+
 import { HttpClientService } from '../http-client.service';
+import { NewTask } from '../new-task';
 
 @Component({
   selector: 'app-new-task-form',
@@ -16,12 +17,13 @@ export class NewTaskFormComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    console.log('NewTaskFormComponent: submitting form');
+    console.log('NewTaskFormComponent: submitting new task [' + this.newTask + ']');
     this.httpClientService.postNewTask(this.newTask).subscribe(
-      (response) => { this.httpClientService.refreshTaskCache(); },
-      (error) => {
-        console.log('NewTaskFormComponent: error response from posting new task [' + this.newTask + ']', error);
-      }
+      (response) => {
+        console.log('NewTaskFormComponent: refreshing cache');
+        this.httpClientService.refreshTaskCache();
+      },
+      (error) => console.log('NewTaskFormComponent: error response', error)
     );
   }
 }

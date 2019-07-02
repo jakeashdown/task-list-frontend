@@ -39,7 +39,7 @@ export class HttpClientService {
     );
   }
 
-  updateExistingTask(updatedTask: Task, originalId: number): Observable<any> {
+  updateExistingTask(updatedTask: UpdatedTask, originalId: number): Observable<any> {
     this.logger.info('updating task for ID', updatedTask, originalId);
     return this.http.put(
       this.host + this.taskPathSegment + '/' + originalId,

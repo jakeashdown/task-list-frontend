@@ -12,7 +12,7 @@ import { UpdateTaskFormComponent } from './task-list/update-task-form/update-tas
 import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -29,7 +29,7 @@ describe('AppComponent', () => {
       ],
       providers: [ HttpClientService ]
     }).compileComponents();
-  }));
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

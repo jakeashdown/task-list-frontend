@@ -10,7 +10,7 @@ describe('TaskListComponent', () => {
   let fixture: ComponentFixture<TaskListComponent>;
   let httpClientServiceSpy: jasmine.SpyObj<HttpClientService>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     const spy = jasmine.createSpyObj('HttpClientService', ['refreshTaskCache', 'postNewTask']);
     TestBed.configureTestingModule({
       imports: [ FormsModule, ReactiveFormsModule ],
@@ -20,7 +20,7 @@ describe('TaskListComponent', () => {
     httpClientServiceSpy = TestBed.get(HttpClientService);
     fixture = TestBed.createComponent(TaskListComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();

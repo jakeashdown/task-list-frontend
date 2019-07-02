@@ -10,19 +10,19 @@ describe('NewTaskFormComponent', () => {
   let fixture: ComponentFixture<NewTaskFormComponent>;
   let httpClientServiceSpy: jasmine.SpyObj<HttpClientService>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ NewTaskFormComponent ],
       imports: [ FormsModule ],
       providers: [
-        { provide: HttpClientService, useValue: jasmine.createSpyObj('HttpClientService', ['refreshTaskCache', 'postNewTask']) },
+        { provide: HttpClientService, useValue: jasmine.createSpyObj('HttpClientService', ['refreshTaskCache', 'createNewTask']) },
         { provide: NGXLogger, useValue: jasmine.createSpyObj('NGXLogger', ['info']) }
       ]
     }).compileComponents();
     httpClientServiceSpy = TestBed.get(HttpClientService);
     fixture = TestBed.createComponent(NewTaskFormComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();

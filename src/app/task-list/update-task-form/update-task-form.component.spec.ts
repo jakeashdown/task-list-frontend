@@ -9,7 +9,7 @@ describe('UpdateTaskFormComponent', () => {
   let component: UpdateTaskFormComponent;
   let fixture: ComponentFixture<UpdateTaskFormComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ UpdateTaskFormComponent ],
       imports: [ FormsModule, ReactiveFormsModule ],
@@ -19,7 +19,7 @@ describe('UpdateTaskFormComponent', () => {
       ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UpdateTaskFormComponent);

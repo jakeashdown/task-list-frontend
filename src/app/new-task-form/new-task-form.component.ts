@@ -16,8 +16,8 @@ export class NewTaskFormComponent {
   constructor(private httpClientService: HttpClientService, private logger: NGXLogger) { }
 
   onSubmit() {
-    console.log('NewTaskFormComponent: submitting new task [' + this.newTask + ']');
-    this.httpClientService.postNewTask(this.newTask).subscribe(
+    this.httpClientService.createNewTask(this.newTask)
+    .subscribe(
       (response) => this.httpClientService.refreshTaskCache(),
       (error) => this.logger.error('form submission failed', error)
     );

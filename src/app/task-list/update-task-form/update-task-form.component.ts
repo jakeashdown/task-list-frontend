@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { NGXLogger } from 'ngx-logger';
 
 import { HttpClientService } from '../../http-client.service';
+import { Task } from '../../task';
 
 @Component({
   selector: 'app-update-task-form',
@@ -11,8 +12,7 @@ import { HttpClientService } from '../../http-client.service';
 })
 export class UpdateTaskFormComponent implements OnChanges {
 
-  @Input() oldTitle: String;
-  @Input() oldDescription: String;
+  @Input() oldTask: Task;
 
   updateTaskForm = new FormGroup({
     title: new FormControl(''),
@@ -23,14 +23,17 @@ export class UpdateTaskFormComponent implements OnChanges {
 
   ngOnChanges() {
     this.updateTaskForm.setValue({
-      title: this.oldTitle,
-      description: this.oldDescription
+      title: this.oldTask.title,
+      description: this.oldTask.description
     });
   }
 
   onSubmit() {
-    // TODO: implement this
-    console.log("fake-submitting updated task", this.updateTaskForm.value);
+    this.httpClientService.updateExistingTask(this.updateTaskForm.value, this.oldTask.id)
+    .subscribe(
+      (response) => this.httpClientService.refreshTaskCache(),
+      (error) => this.logger.error('form submission failed', error)
+    );
   }
 
 }

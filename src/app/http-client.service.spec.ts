@@ -24,4 +24,7 @@ describe('HttpClientService', () => {
     const service: HttpClientService = TestBed.get(HttpClientService);
     expect(service).toBeTruthy();
   });
+
+  // TODO: Add test that 'cache refresh' causes a GET request and updates the cache Observable
+  // TODO: add test that 'post new task' causes a POST request
 });

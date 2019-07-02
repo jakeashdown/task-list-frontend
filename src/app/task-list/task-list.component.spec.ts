@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientService } from '../http-client.service';
 import { TaskListComponent } from './task-list.component';
@@ -12,6 +13,7 @@ describe('TaskListComponent', () => {
   beforeEach(async(() => {
     const spy = jasmine.createSpyObj('HttpClientService', ['refreshTaskCache', 'postNewTask']);
     TestBed.configureTestingModule({
+      imports: [ FormsModule, ReactiveFormsModule ],
       declarations: [ TaskListComponent, UpdateTaskFormComponent ],
       providers: [ { provide: HttpClientService, useValue: spy } ]
     }).compileComponents();
@@ -23,4 +25,7 @@ describe('TaskListComponent', () => {
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
+
+  // TODO: add test that 'all tasks' are listed in component
+  // TODO: add test that child component is rendered on click
 });

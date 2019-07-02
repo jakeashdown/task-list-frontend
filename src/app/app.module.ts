@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 import { HttpClientService } from './http-client.service';
@@ -21,7 +21,8 @@ import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
     BrowserModule,
     HttpClientModule,
     LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ HttpClientService ], // TODO: find nice logging service to use
   bootstrap: [ AppComponent ]

@@ -27,4 +27,7 @@ describe('NewTaskFormComponent', () => {
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
+
+  // TODO: add test that 'new task' is updated in component
+  // TODO: add test that 'new task' is submitted by form submission
 });

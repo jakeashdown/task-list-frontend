@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 import { HttpClientService } from './http-client.service';
@@ -24,7 +24,8 @@ describe('AppComponent', () => {
         LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG}),
         BrowserModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
       ],
       providers: [ HttpClientService ]
     }).compileComponents();
@@ -36,6 +37,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  // TODO: remove this and check that both child components are rendered
   it('should render a container div', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();

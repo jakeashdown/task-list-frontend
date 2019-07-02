@@ -14,6 +14,6 @@
 </div>
 <app-update-task-form
   *ngIf="selectedTask"
-  [title]="selectedTask.title"
-  [description]="selectedTask.description">
+  [oldTitle]="selectedTask.title"
+  [oldDescription]="selectedTask.description">
 </app-update-task-form>

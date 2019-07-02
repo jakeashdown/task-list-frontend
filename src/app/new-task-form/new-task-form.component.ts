@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 
 import { HttpClientService } from '../http-client.service';
@@ -9,13 +9,11 @@ import { NewTask } from '../new-task';
   templateUrl: './new-task-form.component.html',
   styleUrls: ['./new-task-form.component.css']
 })
-export class NewTaskFormComponent implements OnInit {
+export class NewTaskFormComponent {
 
   newTask = new NewTask(null, null);
 
   constructor(private httpClientService: HttpClientService, private logger: NGXLogger) { }
-
-  ngOnInit() {}
 
   onSubmit() {
     console.log('NewTaskFormComponent: submitting new task [' + this.newTask + ']');
